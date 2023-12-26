@@ -29,7 +29,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'tokens', views.TokenViewSet)
+router.register(r'tokens', views.WhatsAppTokenViewSet)
 router.register(r'roles', views.RoleViewSet)
 router.register(r'users', views.UsersViewSet)
 router.register(r'patients', views.PatientViewSet)

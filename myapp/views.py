@@ -4,8 +4,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView 
 from rest_framework import viewsets
-from .models import Media, WhatsMessage,Recurrence, AttachmentReminder, ProcedureInstruction, GeneralHealthReminders, PatientEducation,Room, Message,Role, Event, Reference, Files, Clinic, VirtualMeet, Users, Patient, SocialMedia, SocialMediaAccount, Allergies, SpecialNeed, Diagnosis, Surgery, Vital, Prescription, Notes, Attachment, Insurance, PatientHasSurgery, PatientHasInsurance, PatientHasVital, PatientHasPrescription, PatientHasDiagnosis, Problem, PatientHasProblem, MedicalTest, Result, ReferralDoctors, PatientHasReferralDoctors, UsersHasReferralDoctors, UsersHasPatient, Templates, UsersHasTemplates, PatientReceiveTemplates, Appointment, Tasks, UsersHasTasks, RadiologyResult, RadiologyTest, Billing
-from .serializers import TokenSerializer, MediaSerializer, WhatsMessageSerializer, PatientEducationSerializer, ProcedureInstructionSerializer, GeneralHealthRemindersSerializer, RecurrenceSerializer, AttachmentReminderSerializer, RoomSerializer, MessageSerializer, EventSerializer, ProfileUpdateSerializer, UserRegistrationSerializer, RoleSerializer,ReferenceSerializer, FilesSerializer, ClinicSerializer, VirtualMeetSerializer, UsersSerializer, PatientSerializer, SocialMediaSerializer, SocialMediaAccountSerializer, AllergiesSerializer, SpecialNeedSerializer, DiagnosisSerializer, SurgerySerializer, VitalSerializer, PrescriptionSerializer, NotesSerializer, AttachmentSerializer, InsuranceSerializer, PatientHasSurgerySerializer, PatientHasInsuranceSerializer, PatientHasVitalSerializer, PatientHasPrescriptionSerializer, PatientHasDiagnosisSerializer, ProblemSerializer, PatientHasProblemSerializer, MedicalTestSerializer, ResultSerializer, ReferralDoctorsSerializer,PatientHasReferralDoctorsPostSerializer,PatientHasReferralDoctorsGetSerializer, UsersHasReferralDoctorsSerializer, UsersHasPatientSerializer, TemplatesSerializer, UsersHasTemplatesSerializer, PatientReceiveTemplatesSerializer, AppointmentSerializer, TasksSerializer, UsersHasTasksSerializer, RadiologyTestSerializer, RadiologyResultSerializer, BillingSerializer
+from .models import WhatsAppToken, Media, WhatsMessage,Recurrence, AttachmentReminder, ProcedureInstruction, GeneralHealthReminders, PatientEducation,Room, Message,Role, Event, Reference, Files, Clinic, VirtualMeet, Users, Patient, SocialMedia, SocialMediaAccount, Allergies, SpecialNeed, Diagnosis, Surgery, Vital, Prescription, Notes, Attachment, Insurance, PatientHasSurgery, PatientHasInsurance, PatientHasVital, PatientHasPrescription, PatientHasDiagnosis, Problem, PatientHasProblem, MedicalTest, Result, ReferralDoctors, PatientHasReferralDoctors, UsersHasReferralDoctors, UsersHasPatient, Templates, UsersHasTemplates, PatientReceiveTemplates, Appointment, Tasks, UsersHasTasks, RadiologyResult, RadiologyTest, Billing
+from .serializers import WhatsAppTokenSerializer, MediaSerializer, WhatsMessageSerializer, PatientEducationSerializer, ProcedureInstructionSerializer, GeneralHealthRemindersSerializer, RecurrenceSerializer, AttachmentReminderSerializer, RoomSerializer, MessageSerializer, EventSerializer, ProfileUpdateSerializer, UserRegistrationSerializer, RoleSerializer,ReferenceSerializer, FilesSerializer, ClinicSerializer, VirtualMeetSerializer, UsersSerializer, PatientSerializer, SocialMediaSerializer, SocialMediaAccountSerializer, AllergiesSerializer, SpecialNeedSerializer, DiagnosisSerializer, SurgerySerializer, VitalSerializer, PrescriptionSerializer, NotesSerializer, AttachmentSerializer, InsuranceSerializer, PatientHasSurgerySerializer, PatientHasInsuranceSerializer, PatientHasVitalSerializer, PatientHasPrescriptionSerializer, PatientHasDiagnosisSerializer, ProblemSerializer, PatientHasProblemSerializer, MedicalTestSerializer, ResultSerializer, ReferralDoctorsSerializer,PatientHasReferralDoctorsPostSerializer,PatientHasReferralDoctorsGetSerializer, UsersHasReferralDoctorsSerializer, UsersHasPatientSerializer, TemplatesSerializer, UsersHasTemplatesSerializer, PatientReceiveTemplatesSerializer, AppointmentSerializer, TasksSerializer, UsersHasTasksSerializer, RadiologyTestSerializer, RadiologyResultSerializer, BillingSerializer
 from django.http import JsonResponse
 from rest_framework.generics import RetrieveUpdateAPIView
 from django.http import HttpResponse, JsonResponse
@@ -231,9 +231,9 @@ class PatientViewSet(viewsets.ModelViewSet):
     #         return queryset
     #     return super().get_queryset()
 
-class TokenViewSet(viewsets.ModelViewSet):
+class WhatsAppTokenViewSet(viewsets.ModelViewSet):
     queryset = Token.objects.all()
-    serializer_class = TokenSerializer
+    serializer_class = WhatsAppTokenSerializer
 
 class SocialMediaViewSet(viewsets.ModelViewSet):
     queryset = SocialMedia.objects.all()
@@ -507,7 +507,7 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
 def get_token():
-    tokens = Token.objects.all()
+    tokens = WhatsAppToken.objects.all()
 
     if tokens.exists():
         # Assuming you want to get the first token, modify the logic based on your requirements

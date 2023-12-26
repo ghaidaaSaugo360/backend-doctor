@@ -8,7 +8,7 @@ from django.core.validators import RegexValidator
 
 
 
-class Token(models.Model):
+class WhatsAppToken(models.Model):
     id = models.AutoField(primary_key=True)
     token = models.CharField(max_length=255, null=False)
 

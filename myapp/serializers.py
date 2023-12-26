@@ -1,15 +1,15 @@
 from rest_framework import serializers
 
-from .models import Token, Media, WhatsMessage, Recurrence, AttachmentReminder, PatientEducation, GeneralHealthReminders, ProcedureInstruction,Room, Message, Files, Clinic, Event, VirtualMeet, Reference, Billing, RadiologyTest, RadiologyResult, Role, Users, Patient, SocialMedia, SocialMediaAccount, Allergies, SpecialNeed, Diagnosis, Surgery, Vital, Prescription, Notes, Attachment, Insurance, PatientHasSurgery, PatientHasInsurance, PatientHasVital, PatientHasPrescription, PatientHasDiagnosis, Problem, PatientHasProblem, MedicalTest, Result, ReferralDoctors, PatientHasReferralDoctors, UsersHasReferralDoctors, UsersHasPatient, Templates, UsersHasTemplates, PatientReceiveTemplates, Appointment,  Tasks, UsersHasTasks
+from .models import WhatsAppToken, Media, WhatsMessage, Recurrence, AttachmentReminder, PatientEducation, GeneralHealthReminders, ProcedureInstruction,Room, Message, Files, Clinic, Event, VirtualMeet, Reference, Billing, RadiologyTest, RadiologyResult, Role, Users, Patient, SocialMedia, SocialMediaAccount, Allergies, SpecialNeed, Diagnosis, Surgery, Vital, Prescription, Notes, Attachment, Insurance, PatientHasSurgery, PatientHasInsurance, PatientHasVital, PatientHasPrescription, PatientHasDiagnosis, Problem, PatientHasProblem, MedicalTest, Result, ReferralDoctors, PatientHasReferralDoctors, UsersHasReferralDoctors, UsersHasPatient, Templates, UsersHasTemplates, PatientReceiveTemplates, Appointment,  Tasks, UsersHasTasks
 
 from django.db.models import Min, Max
 from django.utils import timezone
 from django.contrib.auth.hashers import make_password
 
 
-class TokenSerializer(serializers.ModelSerializer):
+class WhatsAppTokenSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Token
+        model = WhatsAppToken
         fields = '__all__'
 
 class RoleSerializer(serializers.ModelSerializer):
