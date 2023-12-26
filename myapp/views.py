@@ -505,7 +505,20 @@ import requests  # Import requests module
 from django.core.files.base import ContentFile
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-access_token='EAAFSezp24bEBO41HSmF0OiFr74AsSfEs4JVadg2UUZCwPqAbvAVnqoBkaT8rdBQ3s1Hh4zzMr7NO39mbcoOKe88AwzdXt26tKHlbZACAf5Udg9mH1jtPb3OU0DssnHopKilepmPdBnoML26xNAH3rDqMTmQIeBwjZAfKswosP0zP2AfJKfX8ZB6zLC804QLcR2ofzLuq2tZACx0R3xgbedyNwjyCsQJ1QeM0pzm9bAwW2'
+
+def get_token():
+    tokens = Token.objects.all()
+
+    if tokens.exists():
+        # Assuming you want to get the first token, modify the logic based on your requirements
+        first_token = tokens.first()
+        return first_token
+        
+    else:
+        return None
+
+
+access_token= get_token()
 @csrf_exempt
 def whatsapp_webhook(request):
     if request.method == 'GET':
@@ -841,7 +854,7 @@ def download_media(media_url):
 
 def mark_message_as_read( message_id):
     #access_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
-    phone_number_id= '189179114270760'
+    phone_number_id= '120586281145678'
     url = f'https://graph.facebook.com/v17.0/{phone_number_id}/messages'
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -867,7 +880,7 @@ def send_acknowledgment(recipient_phone, message_type):
     
     # Replace this with your logic to send the acknowledgment using the WhatsApp API
     #auth_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
-    phone_number_id= '189179114270760'
+    phone_number_id= '120586281145678'
     api_url = f'https://graph.facebook.com/v17.0/{phone_number_id}/messages'
     
     headers = {
@@ -1051,10 +1064,10 @@ def scheduled_function(request):
 
 def send_message(item, patient_data, template):
     try:
-        auth_token = 'EAAFSezp24bEBO41HSmF0OiFr74AsSfEs4JVadg2UUZCwPqAbvAVnqoBkaT8rdBQ3s1Hh4zzMr7NO39mbcoOKe88AwzdXt26tKHlbZACAf5Udg9mH1jtPb3OU0DssnHopKilepmPdBnoML26xNAH3rDqMTmQIeBwjZAfKswosP0zP2AfJKfX8ZB6zLC804QLcR2ofzLuq2tZACx0R3xgbedyNwjyCsQJ1QeM0pzm9bAwW2'
-        phone_number_id = '189179114270760'
+        auth_token = get_token()
+        phone_number_id = '120586281145678'
         api_url_media = f'https://graph.facebook.com/v17.0/{phone_number_id}/media'
-        api_url = f'https://graph.facebook.com/v17.0/189179114270760/messages'
+        api_url = f'https://graph.facebook.com/v17.0/120586281145678/messages'
         print(f"Sending message for patient {patient_data.id} with template ID {item.idTemplates}")
         recipient_phone = patient_data.phone
         print("item", item.body)
@@ -1195,9 +1208,9 @@ def get_media_content(media_type):
 def send_reply_template(patient_data):
     try:
        
-        auth_token = 'EAAFSezp24bEBO41HSmF0OiFr74AsSfEs4JVadg2UUZCwPqAbvAVnqoBkaT8rdBQ3s1Hh4zzMr7NO39mbcoOKe88AwzdXt26tKHlbZACAf5Udg9mH1jtPb3OU0DssnHopKilepmPdBnoML26xNAH3rDqMTmQIeBwjZAfKswosP0zP2AfJKfX8ZB6zLC804QLcR2ofzLuq2tZACx0R3xgbedyNwjyCsQJ1QeM0pzm9bAwW2'
+        auth_token = get_token()
         recipient_phone = patient_data.phone
-        apiUrl = 'https://graph.facebook.com/v17.0/189179114270760/messages'
+        apiUrl = 'https://graph.facebook.com/v17.0/120586281145678/messages'
 
         requestBody = {
             'messaging_product': 'whatsapp',
