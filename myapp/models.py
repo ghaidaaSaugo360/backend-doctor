@@ -5,6 +5,17 @@ from django.contrib.auth.models import Permission, Group
 from django.utils import timezone
 from django.core.validators import MinLengthValidator, MaxLengthValidator, RegexValidator
 from django.core.validators import RegexValidator
+
+
+
+class Token(models.Model):
+    id = models.AutoField(primary_key=True)
+    token = models.CharField(max_length=255, null=False)
+
+    class Meta:
+        managed = False
+        db_table = 'token'
+
 class Role(models.Model):
     idrole = models.AutoField(db_column='idRole', primary_key=True)  # Field name made lowercase.
     name = models.CharField(max_length=45, blank=True, null=True)

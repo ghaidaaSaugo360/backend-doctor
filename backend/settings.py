@@ -85,10 +85,10 @@ ASGI_APPLICATION = 'backend.asgi.application'
 DATABASES = {
        'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'saugodoctor1',
-        'USER': 'saugoadmin',
-        'PASSWORD': 'Aline-360',
-        'HOST':'saugo360.mysql.database.azure.com',
+        'NAME': 'mydbl',
+        'USER': 'ghaida',
+        'PASSWORD': 'Sisibisi13666',
+        'HOST':'healtechdatabase.mysql.database.azure.com',
         'PORT':'3306',
    'OPTIONS': {
             'ssl': {
