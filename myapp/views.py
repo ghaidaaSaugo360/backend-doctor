@@ -232,7 +232,7 @@ class PatientViewSet(viewsets.ModelViewSet):
     #     return super().get_queryset()
 
 class WhatsAppTokenViewSet(viewsets.ModelViewSet):
-    queryset = Token.objects.all()
+    queryset = WhatsAppToken.objects.all()
     serializer_class = WhatsAppTokenSerializer
 
 class SocialMediaViewSet(viewsets.ModelViewSet):
