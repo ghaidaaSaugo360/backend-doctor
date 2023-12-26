@@ -512,7 +512,7 @@ def get_token():
     if tokens.exists():
         # Assuming you want to get the first token, modify the logic based on your requirements
         first_token = tokens.first()
-        return first_token
+        return first_token.token
         
     else:
         return None
