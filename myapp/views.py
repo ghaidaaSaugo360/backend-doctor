@@ -518,7 +518,7 @@ def get_token():
         return None
 
 
-access_token= get_token()
+
 @csrf_exempt
 def whatsapp_webhook(request):
     if request.method == 'GET':
@@ -820,6 +820,7 @@ def whatsapp_webhook(request):
     return JsonResponse({'status': 'method not allowed'}, status=405)
 
 def get_media_url(media_id):
+    access_token= get_token()
     # Replace <YOUR_ACCESS_TOKEN> with your actual access token
     #access_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
     url = f'https://graph.facebook.com/v17.0/{media_id}/'
@@ -837,6 +838,7 @@ def get_media_url(media_id):
         return None  # Or raise an exception if you want to handle it differently
 import base64
 def download_media(media_url):
+    access_token= get_token()
     #access_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
     headers = {'Authorization': f'Bearer {access_token}'}
 
@@ -853,6 +855,7 @@ def download_media(media_url):
         return None
 
 def mark_message_as_read( message_id):
+    access_token= get_token()
     #access_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
     phone_number_id= '120586281145678'
     url = f'https://graph.facebook.com/v17.0/{phone_number_id}/messages'
@@ -877,7 +880,7 @@ def mark_message_as_read( message_id):
 def send_acknowledgment(recipient_phone, message_type):
     # Construct the acknowledgment message based on the message type
     acknowledgment_text = f"Ack: {message_type}"
-    
+    access_token= get_token()
     # Replace this with your logic to send the acknowledgment using the WhatsApp API
     #auth_token = 'EAAFSezp24bEBO8DFtDmD8Bzevm86reUpawPfGbFZAJqw4y6en3XtEUuu1zDhY8AqhQqvDXLFFfUXSanqzCmyQpOOAjFpZB1wBf0XwRviF6XhGeBHJv9zorVOOWs7LsJVuVdpmYAefuGdo3PHZCdwbDMzR6b5BDxY15ZAtGKHmIlgN6aq685DSrVMZAuO3d9nT0zeXHd8PDeXKB4I2sN0DlDZBrhKT3yVUHDIiOGPXJfzoZD'
     phone_number_id= '120586281145678'
