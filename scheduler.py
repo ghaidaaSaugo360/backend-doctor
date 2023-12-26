@@ -1,6 +1,7 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import django
+from myapp.views import get_token
 from django.conf import settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')  
 django.setup()
@@ -125,7 +126,7 @@ def scheduled_function():
 
 def send_message(item, patient_data, template):
     try:
-        auth_token = 'EAAFSezp24bEBO2JJhaopXcHmzJbWFcugZAqhXDPNZBQqGyRNV4l09ptbKnuxw0qFdnYXQ0xtp9qJM0KI1UWQCnTK37ylr6t1rLPWAfIaZALHIPWzT5N4L5eeCfFHECJa1Vr21XEK8U7blsDT3GaIs9fzDMeSm4b2EZCMscl3wms5ZBqoKM1ULoEsCcwTHNdiYkzqZCuqji6ZCeRwIsyZBZBnisF2ITCI6aCV1A3gboHzKf5UZD'
+        auth_token = get_token()
         phone_number_id = '189179114270760'
         api_url_media = f'https://graph.facebook.com/v17.0/{phone_number_id}/media'
         api_url = f'https://graph.facebook.com/v17.0/189179114270760/messages'
@@ -269,7 +270,7 @@ def get_media_content(media_type):
 def send_reply_template(patient_data):
     try:
        
-        auth_token = 'EAAFSezp24bEBO2JJhaopXcHmzJbWFcugZAqhXDPNZBQqGyRNV4l09ptbKnuxw0qFdnYXQ0xtp9qJM0KI1UWQCnTK37ylr6t1rLPWAfIaZALHIPWzT5N4L5eeCfFHECJa1Vr21XEK8U7blsDT3GaIs9fzDMeSm4b2EZCMscl3wms5ZBqoKM1ULoEsCcwTHNdiYkzqZCuqji6ZCeRwIsyZBZBnisF2ITCI6aCV1A3gboHzKf5UZD'
+        auth_token = get_token()
         recipient_phone = patient_data.phone
         apiUrl = 'https://graph.facebook.com/v17.0/189179114270760/messages'
 
